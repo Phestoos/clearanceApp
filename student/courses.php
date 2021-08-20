@@ -29,26 +29,26 @@
 
 	 </div>
 
-            <form method="post"  class="addUser" role="form">
-<input type="hidden" name="action" value="addUser">
+            <form method="post"  class="addCourse" role="form">
+<input type="hidden" name="action" value="addCourse">
 
  <div class="form-group">
 				<label>Course Name</label>
-				<input type="text" name="fullname" id="fullname" class="form-control">
+				<input type="text" name="coursename" id="coursename" class="form-control">
    </div>
 
  <div class="form-group">
 				<label>Course Code</label>
-				<input type="text" name="username" id="username" class="form-control">
+				<input type="text" name="coursecode" id="coursecode" class="form-control">
    </div>
 
  <div class="form-group">
 				<label>Course Unit</label>
-				<input type="text" name="password" id="password" class="form-control">
+				<input type="text" name="courseunit" id="courseunit" class="form-control">
    </div>
    <div class="form-group">
   				<label>Lecturer</label>
-  				<input type="text" name="password" id="password" class="form-control">
+  				<input type="text" name="lecturer" id="lecturer" class="form-control">
      </div>
 
 

@@ -7,6 +7,18 @@ date_default_timezone_set("Etc/GMT-8");
 if(isset($_POST['action'])){
 //started here
 
+// if ($_POST['action'] == 'addCourse') {
+// 	$feedbck = 0;
+// 	$coursename = $_POST['course_name'];
+// 	$coursecode = $_POST['course_code'];
+// 	$courseunit = $_POST['course_unit'];
+// 	$lecturer = $_POST['lecturer'];
+// 	$stmt = $conn->db->prepare("INSERT INTO courses ( course_name, course_code,course_unit,lecturer)
+//  	VALUES (:stdId,:position,:session,:level,:img)");
+// } else {
+// 	# code...
+// }
+
 
 if($_POST['action'] == "login"){
 	$feedbck = 0;
@@ -35,6 +47,7 @@ if($_POST['action'] == "addFee"){ echo Store::saveFee($_POST); }
 if($_POST['action'] == "addStudent"){ echo Store::saveStudent();}
 
 if($_POST['action'] == "addUser"){ echo Store::saveUser();}
+if($_POST['action'] == "addCourse"){ echo Store::saveCourse();}
 
 
 }

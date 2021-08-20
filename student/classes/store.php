@@ -175,7 +175,7 @@ if($existCheck = self::existTwo('system_departmentdata', 'dept_name', 'fid_id', 
 	$now = self::CreatedOn();
 
 $stmt = $conn->db->prepare("INSERT INTO system_departmentdata (dept_name, fid_id, created_on)
-																											VALUES (:dept_name, :fid_id, :created_on )");
+							VALUES (:dept_name, :fid_id, :created_on )");
 $stmt->bindParam(':dept_name', $dept_name, PDO::PARAM_STR);
 $stmt->bindParam(':fid_id', $faculty, PDO::PARAM_STR);
 $stmt->bindParam(':created_on', $now, PDO::PARAM_STR);
@@ -294,7 +294,33 @@ if ($stmt->execute()): return 1; else: return 0;	endif;
 
 }
 
+// New Feature to Add Student Course
 
+public static function saveCourse(){
+	$conn = Database::getInstance();
+	$coursename = $_POST['course_name'];
+	$coursecode = $_POST['course_code'];
+	$courseunit = $_POST['course_unit'];
+	$lecturer = $_POST['lecturer'];
+	
+	if($existCheck = self::existOne('users', 'username', $username)==0)
+	{
+		$now = self::CreatedOn();
+	
+	$stmt = $conn->db->prepare("INSERT INTO courses (course_name, course_code, course_unit, lecturer)
+								VALUES (:course_name, :course_name, :course_code, :course_code, :course_unit, :course_unit, :lecturer, :lecturer )");
+	$stmt->bindParam(':course_name', $coursecode, PDO::PARAM_STR);
+	$stmt->bindParam(':course_code', $coursecode, PDO::PARAM_STR);
+	$stmt->bindParam(':course_unit', $courseunit, PDO::PARAM_STR);
+	$stmt->bindParam(':lecturer', $lecturer, PDO::PARAM_STR);
+	if ($stmt->execute()): return 1; else: return 0;	endif;
+	 }
+	 else {
+		return 2;
+		}
+	
+	
+	}
 
 
 
