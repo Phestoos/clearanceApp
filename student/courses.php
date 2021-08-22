@@ -1,5 +1,15 @@
-<?php include 'classes/store.php'; ?>
-<?php include './includes/header.php'; ?>
+<?php //include 'classes/store.php'; ?>
+<?php include './includes/header.php';?>
+<?php 
+  	$server = 'localhost';
+    $user = 'root';
+    $password = 'festus123';
+    $database = 'dms';
+  
+    // create connection to my database and server
+    $connection=mysqli_connect($server, $user,$password,$database);
+    error_reporting(1);
+?>
 
 
 
@@ -29,8 +39,31 @@
 
 	 </div>
 
+   <?php
+      if (isset($_POST["addCourse"])) {
+        $courseName = $_POST["coursename"];
+        $courseCode = $_POST["coursecode"];
+        $courseUnit = $_POST["courseunit"];
+        $lecturer = $_POST["lecturer"];
+
+        $sql = mysqli_query($connection, "insert into courses(course_name,course_code,course_unit,lecturer)
+            values('$courseName','$courseCode','$courseUnit','$lecturer'");
+            if ($sql) {
+              # code...
+              echo '<script>alert("Course inserted successfully..");</script>';
+            }
+            else {
+              # code...
+              echo 'input ghhg';
+              echo '<script>alert("Course not added, make sure all field are correctly filled");</script>';
+          }
+      }
+ 
+
+?>
+
             <form method="post"  class="addCourse" role="form">
-<input type="hidden" name="action" value="addCourse">
+<!-- <input type="hidden" name="action" value="addCourse"> -->
 
  <div class="form-group">
 				<label>Course Name</label>
@@ -55,7 +88,7 @@
 
             <div class="form-group">
 
-             <button type="submit" class="btn btn-primary"><span class="fas fa-save"></span> Add Course</button>
+             <button type="submit" name="addCourse" class="btn btn-primary"><span class="fas fa-save"></span> Add Course</button>
              </div>
 
 

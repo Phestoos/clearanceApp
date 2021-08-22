@@ -280,7 +280,7 @@ if($existCheck = self::existOne('users', 'username', $username)==0)
 	$now = self::CreatedOn();
 
 $stmt = $conn->db->prepare("INSERT INTO users (fullname, username, password, created_on)
-																											VALUES (:fullname, :username, :password, :created_on )");
+						VALUES (:fullname, :username, :password, :created_on )");
 $stmt->bindParam(':fullname', $fullname, PDO::PARAM_STR);
 $stmt->bindParam(':username', $username, PDO::PARAM_STR);
 $stmt->bindParam(':password', $password, PDO::PARAM_STR);
@@ -303,12 +303,12 @@ public static function saveCourse(){
 	$courseunit = $_POST['course_unit'];
 	$lecturer = $_POST['lecturer'];
 	
-	if($existCheck = self::existOne('users', 'username', $username)==0)
+	if($existCheck = self::existOne('courses', 'course_name', $coursename)==0)
 	{
 		$now = self::CreatedOn();
 	
 	$stmt = $conn->db->prepare("INSERT INTO courses (course_name, course_code, course_unit, lecturer)
-								VALUES (:course_name, :course_name, :course_code, :course_code, :course_unit, :course_unit, :lecturer, :lecturer )");
+								VALUES (:course_name, :course_code, :course_unit, :lecturer)");
 	$stmt->bindParam(':course_name', $coursecode, PDO::PARAM_STR);
 	$stmt->bindParam(':course_code', $coursecode, PDO::PARAM_STR);
 	$stmt->bindParam(':course_unit', $courseunit, PDO::PARAM_STR);
@@ -332,7 +332,7 @@ $conn = Database::getInstance();
 	$now = self::CreatedOn();
 
 $stmt = $conn->db->prepare("INSERT INTO payment (feesId, studentId, amount, datePaid)
-																											VALUES (:feesId, :studentId, :amount, :created_on )");
+										VALUES (:feesId, :studentId, :amount, :created_on )");
 $stmt->bindParam(':feesId', $feesId, PDO::PARAM_STR);
 $stmt->bindParam(':studentId', $studentId, PDO::PARAM_STR);
 $stmt->bindParam(':amount', $amount, PDO::PARAM_STR);
